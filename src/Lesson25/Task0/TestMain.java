@@ -24,7 +24,14 @@ public class TestMain {
     bus.takePassenger(passenger1);
     System.out.println(bus.toString());
     bus.takePassenger(passenger3);
+    BusDriver bob = new BusDriver("Bob", "ABC445566");
+    BusDriver gena = new BusDriver("Genna", "ZXC12345678");
+    bus.setDriver(bob);
     System.out.println(bus.toString());
+    bus.setDriver(gena);
+    System.out.println(bus.toString());
+
+
 
   }
 

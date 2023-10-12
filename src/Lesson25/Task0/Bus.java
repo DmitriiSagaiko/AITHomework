@@ -39,7 +39,11 @@ public class Bus {
     this.autoPilot = new AutoPilot(" 001 beta");// Композиция
   }
 
+
+
   public boolean takePassenger(Passenger passenger) { // В метод пришел объект класса Passenger
+    if (passenger.getTicketNumber() != null) return false; // Если пассажир уже с билетом, ехать нельзя
+
     if (amountPassenger < capacity) {
       passengers[amountPassenger] = passenger;
       passenger.setTicketNumber(generateTicketNumber(passenger.getId()));
