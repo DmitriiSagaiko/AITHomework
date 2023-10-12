@@ -2,17 +2,24 @@ package Lesson26.Task1;
 
 public class Human {
 
-  private int speed = 10;
+  protected int speed;
 
-  private int timeToRest = 15;
+  protected int timeToRest;
+  protected String name;
+
+  public Human(int speed, int timeToRest,String name) {
+    this.speed = speed;
+    this.timeToRest = timeToRest;
+    this.name = name;
+  }
 
   public void run() {
-    System.out.println("Я бегу со скорость " + speed + " и мне нужно для отдыха");
+    System.out.println(name +" Бежит со скоростью " + this.speed + " ему нужно для отдыха");
     showRestTime();
   }
 
-  public void showRestTime() {
-    System.out.println(timeToRest + " мин");
+  private void showRestTime() {
+    System.out.println(this.timeToRest + " мин");
   }
 ////////////////////////////////////////////
   public int getSpeed() {

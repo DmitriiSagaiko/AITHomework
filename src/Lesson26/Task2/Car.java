@@ -2,11 +2,14 @@ package Lesson26.Task2;
 
 public class Car extends Vehicle {
 
-  private boolean hasEngine = true;
 
+  public Car(String name, boolean hasEngine) {
+    super(name, hasEngine);
+  }
 
   @Override
   public void startEngine() {
-    System.out.println((hasEngine) ? "Двигатель машины запущен" : "У машины нет двигателя");
+    System.out.println((this.hasEngine) ? "Двигатель у машины " + this.name + " запущен"
+        : "У " + this.name + " нет двигателя");
   }
 }
