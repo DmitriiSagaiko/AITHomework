@@ -7,10 +7,10 @@ public class Human {
   protected int timeToRest;
   protected String name;
 
-  public Human(int speed, int timeToRest,String name) {
-    this.speed = speed;
-    this.timeToRest = timeToRest;
-    this.name = name;
+  public Human() {
+    this.speed = 10;
+    this.timeToRest = 15;
+    this.name = "Человек";
   }
 
   public void run() {
