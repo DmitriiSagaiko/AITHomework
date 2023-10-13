@@ -1,6 +1,6 @@
 package Lesson26.Task1;
 
-public class Human {
+public class Human extends Runner {
 
   protected int speed;
 
@@ -18,7 +18,7 @@ public class Human {
     showRestTime();
   }
 
-  private void showRestTime() {
+  protected void showRestTime() {
     System.out.println(this.timeToRest + " мин");
   }
 ////////////////////////////////////////////
