@@ -21,9 +21,10 @@ public class ElectronicWallet implements PaymentSystem {
   }
 
   @Override
-  public void transferMoney(int amount) {
+  public void transferMoney(int amount, PaymentSystem recipient) {
     System.out.println("Перевожу " + amount + " " + currency + "  со счета " + accountNumber);
     balance=balance-amount;
+    recipient.acceptTransferBTC(amount);
     checkBalance();
   }
 
@@ -37,5 +38,15 @@ public class ElectronicWallet implements PaymentSystem {
   @Override
   public void checkBalance() {
     System.out.println("Текщий баланс на счете " + accountNumber + " : " + balance + " " + currency);
+  }
+
+  @Override
+  public void acceptTransferEUR(int amount) {
+    balance = amount/1000 + balance;
+  }
+
+  @Override
+  public void acceptTransferBTC(int amount) {
+    balance += amount;
   }
 }

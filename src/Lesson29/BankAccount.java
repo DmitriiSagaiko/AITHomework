@@ -19,9 +19,10 @@ public class BankAccount implements PaymentSystem {
   }
 
   @Override
-  public void transferMoney(int amount) {
+  public void transferMoney(int amount, PaymentSystem recipient) {
     System.out.println("Перевожу " + amount + " " + currency + "  со счета " + iban);
     balance -= amount;
+    recipient.acceptTransferEUR(amount);
     checkBalance();
 
   }
@@ -37,5 +38,15 @@ public class BankAccount implements PaymentSystem {
   public void checkBalance() {
     System.out.println("Текщий баланс на счете " + iban + " : " + balance + " " + currency);
 
+  }
+
+  @Override
+  public void acceptTransferEUR(int amount) {
+    balance += amount;
+  }
+
+  @Override
+  public void acceptTransferBTC(int amount) {
+    balance += amount*1000; //мой курс
   }
 }
