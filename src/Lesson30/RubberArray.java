@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class RubberArray<T> {
-    private T[] array; // можно инициализировать поле при его объявлении = new int[10];
+    private T[] array;
     private int cursor;
     static final int MULTIPLIER = 2;
 
@@ -27,13 +27,6 @@ public class RubberArray<T> {
 
 
     public void add(T... values) {
-        /* могу обращаться как с массивом (перебирать по индексам)
-        for (int i = 0; i < ints.length; i++) {
-            ints[i]
-        }
-         */
-      // ints[0] = 100;
-
       for (T value : values) {
         add(value);
       }
@@ -50,6 +43,9 @@ public class RubberArray<T> {
     }
 
     public String toString() {
+      if ( cursor ==0) {
+        return "[]";
+      }
       String result = "[";
       for (int i = 0; i < cursor; i++) {
         result += array[i] + ((i < cursor - 1) ? ", " : "]");
