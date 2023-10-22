@@ -45,16 +45,10 @@ public class MyLinkedList<T> implements MyList<T>,Queue<T> {
         cursor = cursor.next;
         i++;
       }
-      Node<T> temp = new Node<>(cursor.value, cursor.previous, cursor.next); // новая нода
-      // с координатам курсом
       output = cursor.value;
+      cursor.previous.next = cursor.next;
+      cursor.next.previous = cursor.previous;
 
-      cursor = cursor.previous; // шаг назад
-      cursor.next = temp.next; // предыдущий до удаляемого имеет связь со следующим после удаляемого
-
-      cursor = cursor.next;
-      cursor.previous = temp.previous;// следующий после удаляемого имеет связь
-      // с предыдущим после удаляемого
     }
 
     size--;
@@ -70,13 +64,11 @@ public class MyLinkedList<T> implements MyList<T>,Queue<T> {
     }
     Node<T> cursor = first;
     int i = 0;
-    while (cursor != null) {
-      if (i == index) {
-        output = cursor.value;
-      }
+    while (i != index) {
       cursor = cursor.next;
       i++;
     }
+    output=cursor.value;
     return output;
   }
 
