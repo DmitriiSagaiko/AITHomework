@@ -1,4 +1,4 @@
-package Lesson34.Person;
+package Lesson35;
 
 public class Person {
 
@@ -80,7 +80,7 @@ public class Person {
     boolean isDigit = false;
     boolean isLowCase = false;
     boolean isUpperCase = false;
-    boolean isSymbol = false;
+    boolean isSymbol = true;
 
     for (int i = 0; i < password.length(); i++) {
       char x = password.charAt(i);
@@ -94,8 +94,8 @@ public class Person {
       if (Character.isUpperCase(x)) {
         isUpperCase = true;
       }
-      if ("!%@$&".indexOf(x) >=0) {
-        isSymbol = true;
+      if ("#^()-_=+/|?,.><~;:*".indexOf(x) >= 0) {
+        isSymbol = false;
       }
     }
 
@@ -106,7 +106,7 @@ public class Person {
   public String toString() {
     return "Person{" +
         "email='" + email + '\'' +
+        ", password='" + password + '\'' +
         '}';
   }
-
 }

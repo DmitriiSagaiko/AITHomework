@@ -1,9 +1,9 @@
-package Lesson34.Person;
+package Lesson35;
 
 public class PersonApp {
 
   public static void main(String[] args) {
-    Person person = new Person("dima@mail.co","passwrod");
+    Person person = new Person("dima@mail.co","AB#ac1@@");
     System.out.println(person);
     person.setEmail("aa&a@mail.c");
     System.out.println(person);

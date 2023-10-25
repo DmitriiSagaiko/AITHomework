@@ -126,22 +126,20 @@ public class RubberArray<T> implements Iterable<T> {
   }
 
   private class MyIterator implements Iterator<T> {
-    T item;
+
     int counter = 0;
-    public MyIterator() {
-      this.item = array[0];
-    }
 
     @Override
     public boolean hasNext() {
-      return item != null;
+
+      return counter<cursor;
     }
 
     @Override
     public T next() {
       T value = array[counter];
       counter++;
-      item =array[counter];
+
       return value;
     }
   }

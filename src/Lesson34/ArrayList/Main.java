@@ -6,7 +6,7 @@ public class Main {
 
   public static void main(String[] args) {
     RubberArray<String> rubberArray = new RubberArray<>();
-    rubberArray.add("Hello", "How are You", "Good", "A", "B", "C", "D" , " E" , " F", "G", "K", "A");
+    rubberArray.add("Hello", "How are You", null, "A", "B", "C", "D" , " E" , " F", "G", "K", "A");
 //    System.out.println(rubberArray);
 //    rubberArray.removeByIndex(1);
 //    System.out.println(rubberArray);
@@ -30,12 +30,13 @@ public class Main {
     }
     RubberArray<Integer> integerRubberArray = new RubberArray<>();
     integerRubberArray.add(1,2,3,4,5,6);
+    System.out.println(integerRubberArray.length());
     for (Integer value : integerRubberArray) {
       System.out.println(value);
     }
 
     RubberArray<Character> characterRubberArray = new RubberArray<>();
-    characterRubberArray.add('a','b','c','d');
+    characterRubberArray.add(null,null,null,null);
 
     for (Character value : characterRubberArray) {
       System.out.println(value);
