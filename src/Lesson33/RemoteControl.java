@@ -9,7 +9,7 @@ private int channelNumber;
     this.televesion = televesion;
   }
 
-  public void on(int channelNumber, Televesion televesion) {
+  public void on(int channelNumber) {
     System.out.println("На пульте выставлен канал: " + channelNumber);
     if (channelNumber <= 0 || channelNumber > 5) {
       System.out.println("Такого канала нет");
@@ -17,7 +17,7 @@ private int channelNumber;
       return;
     }
     setChannelNumber(channelNumber);
-    televesion.turnOnChannel(this);
+    televesion.turnOnChannel(channelNumber);
 
   }
 
