@@ -8,6 +8,13 @@ public class RubberArray<T> implements Iterable<T> {
     private int cursor;
     static final int MULTIPLIER = 2;
 
+    public T getFirst() {
+      if(cursor>0) {
+        return array[0];
+      }
+      return null;
+    }
+
 
 
     public RubberArray() {

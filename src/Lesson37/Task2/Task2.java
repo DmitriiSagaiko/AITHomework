@@ -1,13 +1,12 @@
 package Lesson37.Task2;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Task2 {
 
   public static void main(String[] args) {
-    RubberArray ra = new RubberArray<>();
+    RubberArray<LocalDate> ra = new RubberArray<>();
     LocalDate d1 = LocalDate.of(2013, 10, 27);
     LocalDate d2 = LocalDate.of(2023, 5, 27);
     LocalDate d3 = LocalDate.of(2023, 6, 27);
@@ -18,22 +17,19 @@ public class Task2 {
     System.out.println(rangeDaysBetween(ra));
   }
 
-  public static long rangeDaysBetween(RubberArray inputRubberArray) {
+  public static long rangeDaysBetween(RubberArray<LocalDate> inputRubberArray) {
     long maxDays = 0;
-    LocalDate dateAfterParse;
-    LocalDate dateAfterParse1;
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    for (int i = 0; i < inputRubberArray.length(); i++) {
-      String a = inputRubberArray.toArray()[i].toString();
-      dateAfterParse = LocalDate.parse(a, dateTimeFormatter);
-      for (int j = i + 1; j < inputRubberArray.length(); j++) {
-        String b = inputRubberArray.toArray()[j].toString();
-        dateAfterParse1 = LocalDate.parse(b, dateTimeFormatter);
-        if (Math.abs(dateAfterParse.until(dateAfterParse1, ChronoUnit.DAYS)) > maxDays) {
-          maxDays = Math.abs(dateAfterParse.until(dateAfterParse1, ChronoUnit.DAYS));
-        }
+    LocalDate max = inputRubberArray.getFirst();
+    LocalDate min = max;
+    for(LocalDate localDate : inputRubberArray) {
+      if (localDate.isAfter(max)) {
+        max = localDate;
+      }
+      if (localDate.isBefore(min)) {
+        min=localDate;
       }
     }
+    maxDays = Math.abs(max.until(min,ChronoUnit.DAYS));
     return maxDays;
   }
 }
