@@ -34,7 +34,7 @@ public class Task1 {
   }
 
   public static List<Integer> getTheSameElements(List<Integer> arrayList,List<Integer> linkedList) {
-    List<Integer> output = new ArrayList<>(List.copyOf(arrayList));
+    List<Integer> output = new ArrayList<>(arrayList);
     output.retainAll(linkedList);
     return output;
   }
