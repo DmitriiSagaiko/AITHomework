@@ -25,6 +25,8 @@ public class Task3 {
     mySet.removeAll(mySet1);
 
     List<Character> characters = new ArrayList<>(mySet);
+    // можно взять mySet.iterator().next()
+    System.out.println(mySet.iterator().next());
     return characters.get(0);
 
   }
