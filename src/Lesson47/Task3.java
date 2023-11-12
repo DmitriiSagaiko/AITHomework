@@ -1,8 +1,5 @@
 package Lesson47;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,16 +39,16 @@ public class Task3 {
     String currentCity = departure;
 
     while (true) {
-      if (map.get(currentCity)==null) {
+      if (map.get(currentCity) == null) {
         System.out.println("В такой город нельзя прилететь");
         output.clear();
         return output;
       }
       output.add(currentCity);
 
-      currentCity=map.get(currentCity);
+      currentCity = map.get(currentCity);
 
-      if(arrival.equals(currentCity)) {
+      if (arrival.equals(currentCity)) {
         output.add(currentCity);
         return output;
       }

@@ -16,7 +16,7 @@ public class Task1_FrequencyDictionary {
     Map<Character, Integer> frequencyCharsMap = frequencyCharsDictionary(text);
 
     System.out.println("\nВхождение символов: ");
-    frequencyCharsMap.forEach((k, v) -> System.out.print("'" + k + "': " + v+ "; "));
+    frequencyCharsMap.forEach((k, v) -> System.out.print("'" + k + "': " + v + "; "));
     System.out.println();
   }
 
@@ -24,7 +24,7 @@ public class Task1_FrequencyDictionary {
 
     Map<Character, Integer> output = new TreeMap<>();
     for (Character c : text.toCharArray()) {
-      output.put(c, output.getOrDefault(c,0) + 1);
+      output.put(c, output.getOrDefault(c, 0) + 1);
     }
     return output;
   }
@@ -36,7 +36,7 @@ public class Task1_FrequencyDictionary {
     Map<String, Integer> output = new LinkedHashMap<>();
     //заполняем мапу ключами
     for (String string : words) {
-      output.put(string, output.getOrDefault(string,0) + 1);
+      output.put(string, output.getOrDefault(string, 0) + 1);
     }
     return output;
 
