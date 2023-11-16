@@ -17,15 +17,15 @@ public class Task3 {
     directFlights.put("Miami", "New York");
     directFlights.put("Los Angeles", "San Francisco");
     directFlights.put("San Francisco", "New York");
+    directFlights.put("Nowosibirsk", "Omsk");
 
-    List<String> route = findRoute(directFlights, "Boston", "Los Angeles");
+    List<String> route = findRoute(directFlights, "Boston", "Las Vegas");
     System.out.println(route);
   }
 
   private static List<String> findRoute(Map<String, String> map, String departure, String arrival) {
     List<String> output = new LinkedList<>();
-    Set<Map.Entry<String, String>> entrySet = map.entrySet();
-    System.out.println(entrySet);
+
 
     if (!map.containsKey(departure)) {
       System.out.println("отсюда нельзя вылететь");
@@ -39,11 +39,11 @@ public class Task3 {
     String currentCity = departure;
 
     while (true) {
-      if (map.get(currentCity) == null) {
-        System.out.println("В такой город нельзя прилететь");
-        output.clear();
-        return output;
-      }
+//      if (map.get(currentCity) == null) {
+//        System.out.println("В такой город нельзя прилететь");
+//        output.clear();
+//        return output;
+//      }
       output.add(currentCity);
 
       currentCity = map.get(currentCity);

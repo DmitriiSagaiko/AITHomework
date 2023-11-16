@@ -10,6 +10,8 @@ public class Task3 {
   public static void main(String[] args) {
     String string = "abcdefj ab,cdf,";
     System.out.println(getFirstUniqueChar(string));
+    String s = "aabbbccdfg!";
+    System.out.println(getFirstUniqueChar(s));
   }
 
   public static char getFirstUniqueChar(String input) {
@@ -26,7 +28,7 @@ public class Task3 {
 
     List<Character> characters = new ArrayList<>(mySet);
     // можно взять mySet.iterator().next()
-    System.out.println(mySet.iterator().next());
+    //System.out.println(mySet.iterator().next());
     return characters.get(0);
 
   }
