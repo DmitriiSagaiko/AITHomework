@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,28 +24,25 @@ more.txt список тех, кому в сумме перечисленно 20
 
   public static void main(String[] args) {
 
-
-
     File path = new File("src/Lesson51");
-    File file = new File(path,"data");
-    File less = new File(path,"less.txt");
-    File more = new File(path,"more.txt");
+    File file = new File(path, "data");
+    File less = new File(path, "less.txt");
+    File more = new File(path, "more.txt");
 
-    createFiles(fillTheMap(file),less,more);
+    createFiles(fillTheMap(file), less, more);
 
   }
 
-  public static Map<String,Integer> fillTheMap (File inputFile) {
-    Map<String,Integer> output = new HashMap<>();
+  public static Map<String, Integer> fillTheMap(File inputFile) {
+    Map<String, Integer> output = new HashMap<>();
 
-    try(FileReader fileReader = new FileReader(inputFile);
-        BufferedReader bufferedReader = new BufferedReader(fileReader))
-    {
+    try (FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader)) {
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         int intValue = parseInt(line);
         String key = parseString(line);
-        output.merge(key,intValue, (oldValue,value) -> oldValue+value);
+        output.merge(key, intValue, (oldValue, value) -> oldValue + value);
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -61,21 +57,21 @@ more.txt список тех, кому в сумме перечисленно 20
     String[] strings = input.split(":");
     return strings[0];
   }
+
   public static int parseInt(String input) {
     String[] strings = input.split(":");
     return Integer.parseInt(strings[1]);
   }
 
-  public static void createFiles(Map<String,Integer> inputMap, File less, File more) {
-    Set<Map.Entry<String,Integer>> entrySet = inputMap.entrySet();
-    for (Map.Entry<String,Integer> entry : entrySet) {
+  public static void createFiles(Map<String, Integer> inputMap, File less, File more) {
+    Set<Map.Entry<String, Integer>> entrySet = inputMap.entrySet();
+    for (Map.Entry<String, Integer> entry : entrySet) {
       int value = entry.getValue();
       if (value < 2000) {
         String line = entry.getKey() + ":" + value;
 
-        try(FileWriter fileWriter = new FileWriter(less,true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
-        {
+        try (FileWriter fileWriter = new FileWriter(less, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
           bufferedWriter.write(line);
           bufferedWriter.newLine();
         } catch (IOException e) {
@@ -86,9 +82,8 @@ more.txt список тех, кому в сумме перечисленно 20
       } else {
         String line = entry.getKey() + ":" + value;
 
-        try(FileWriter fileWriter = new FileWriter(more,true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
-        {
+        try (FileWriter fileWriter = new FileWriter(more, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
           bufferedWriter.write(line);
           bufferedWriter.newLine();
         } catch (IOException e) {
