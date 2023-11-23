@@ -11,7 +11,7 @@ public class Task2 {
   }
 
   private static int countLetters(String text) {
-    return Stream.of(text.split("\\s"))
+    return Stream.of(text.replaceAll("[^a-zA-Z0-9а-яА-Я ]", "").split("\\s+"))
         .filter(s -> s.length() > 4)
         .mapToInt(String::length)
         .reduce(0, Integer::sum);
