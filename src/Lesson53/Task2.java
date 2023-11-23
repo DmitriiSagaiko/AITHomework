@@ -14,6 +14,7 @@ public class Task2 {
     System.out.println(filterThePeopleByPredicate1(getTheListOfPersons(), predicate));
     System.out.println("+++++++++++=");
     System.out.println(filterThePeopleByStream(personStream(getTheListOfPersons(),predicate)));
+    System.out.println(filterThePeopleByStream(personStream(getTheListOfPersons(),predicate)));
 
 
   }

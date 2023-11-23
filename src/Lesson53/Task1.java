@@ -10,8 +10,8 @@ public class Task1 {
         "Alcohol");
 
     List<String> output = list.stream()
-        .distinct()
         .filter(string -> (string.startsWith("A")) || (string.startsWith("a")))
+        .distinct()
         .sorted()
         .collect(Collectors.toList());
 
