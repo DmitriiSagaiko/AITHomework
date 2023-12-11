@@ -7,7 +7,7 @@ public class Task4 {
 
   public static void main(String[] args) {
     String text = "Bears, Bees, and Bunnies are beautiful.";
-    Matcher matcher = Pattern.compile("[B|b]").matcher(text);
+    Matcher matcher = Pattern.compile("B|b").matcher(text);
     while (matcher.find()) {
       System.out.print(matcher.group() + " ");
     }
