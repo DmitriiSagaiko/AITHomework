@@ -4,46 +4,43 @@ public class Task1 {
 
   private final static Object OBJECT = new Object();
 
-  int a = 0;
-  int b = 0;
-  int c = 0;
+  volatile String  string = "A";
 
   Thread threadA = new Thread(new Runnable() {
     @Override
     public void run() {
-      while (a < 20) {
+      while (string.length()<60) {
         synchronized (OBJECT) {
-          System.out.print("A");
-          a++;
-          try {
-            OBJECT.wait();
-          } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-          } finally {
-            OBJECT.notifyAll();
+          while (!string.endsWith("C")) {
+            try {
+              OBJECT.wait();
+            } catch (InterruptedException e) {
+              throw new RuntimeException(e);
+            }
           }
+          string += "A";
+          OBJECT.notifyAll();
         }
-        OBJECT.notifyAll();
       }
     }
+
   });
 
   Thread threadB = new Thread(new Runnable() {
     @Override
     public void run() {
-      while (b < 20) {
+      while (string.length()<60) {
         synchronized (OBJECT) {
-          System.out.print("B");
-          b++;
-          try {
-            OBJECT.wait();
-          } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-          } finally {
-            OBJECT.notifyAll();
+          while (!string.endsWith("A")) {
+            try {
+              OBJECT.wait();
+            } catch (InterruptedException e) {
+              throw new RuntimeException(e);
+            }
           }
+          string += "B";
+          OBJECT.notifyAll();
         }
-        OBJECT.notifyAll();
       }
     }
   });
@@ -51,21 +48,19 @@ public class Task1 {
   Thread threadC = new Thread(new Runnable() {
     @Override
     public void run() {
-      while (c < 20) {
+      while (string.length()<=60) {
         synchronized (OBJECT) {
-          System.out.print("C");
-          c++;
-          try {
-            OBJECT.wait();
-          } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-          } finally {
-            OBJECT.notifyAll();
+          while (!string.endsWith("B")) {
+            try {
+              OBJECT.wait();
+            } catch (InterruptedException e) {
+              throw new RuntimeException(e);
+            }
           }
+          string += "C";
+          OBJECT.notifyAll();
         }
-      OBJECT.notifyAll();
       }
-
     }
   });
 
@@ -82,6 +77,8 @@ public class Task1 {
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
+
+    System.out.println(task1.string);
 
   }
 }
