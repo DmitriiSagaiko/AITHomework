@@ -78,7 +78,7 @@ public class Task1 {
       throw new RuntimeException(e);
     }
 
-    System.out.println(task1.string);
+    System.out.println(task1.string.length());
 
   }
 }
